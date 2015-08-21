@@ -1,55 +1,51 @@
-# The goal of this exercise is to print out info about our initial player and a list of all the players.
-
-# Each player has a name (a string) and an initial health value (an integer number).
+# In this exercise, we'll give them some life and also add a fourth player. The goal is to print out each player's name and health with a slightly different format, like so:
 
 =begin
-larry's health is 60
-
-Players: 
-  larry
-  curly
-  moe
+Larry has a health of 60.
+CURLY has a health of 125.
+*************Moe has a health of 100.*************
+Shemp........................... 90 health
 =end
 
+# Variables and Objects
 
-# The name of our first player is "larry" (he prefers the lowercase pronunciation). Create a variable to remember that name. In other words, assign the player's name to the variable.
+name1 = "larry"
+health1 = 60
 
-# Larry's initial health value is 60. Create a second variable and assign the health value to it.
+# formatting task : capitalize the name.
 
-name = "larry"
-health_value = 60
+name1.capitalize
+puts "#{name1.capitalize} has a health of #{health1}."
 
-# Next, using those two variables, create the single-quoted string "larry's health is 60" and print it out to the console
+name2 = "curly"
+health2 = 125
 
-puts name + '\'s health is ' + health_value.to_s
+puts "#{name2.upcase} has a health of #{health2}."
 
-# All that escaping and concatenation gets kinda tedious, doesn't it? Let's change the single-quoted string to a double-quoted string and substitute (interpolate) the name and health values into the string.
+# change Curly's health variable to point to Larry's health variable and print out Curly's information again.
 
-puts
-puts "#{name}'s health is #{health_value}"
+health2 = health1
+puts "#{name2.upcase} has a health of #{health2}."
 
-# How would you change the double-quoted string to triple Larry's health?
+# Reassign Larry's health variable to be 30. Then print out the name and health of both players again.
 
-puts
-puts "#{name}'s health is #{health_value * 3}"
+health1 = 30
+puts "#{name1.capitalize} has a health of #{health1}."
+puts "#{name2.upcase} has a health of #{health2}."
 
-puts
-puts "#{name}'s health is #{health_value / 9}"
-puts "#{name}'s health is #{health_value / 9.0}"
+# Use the documentation to find the method that centers a string. Note that the first parameter (the length) is required, but the second parameter for the character to use as padding is optional.
 
-# try 1
-puts \
-"Players: 
-  larry
-  curly
-  moe"
+name3 = "moe"
+health3 = 100
 
-# try 2
-puts "Players:\n\tlarry\n\tcurly\n\tmoe"
+puts "#{name3.capitalize} has a health of #{health3}.".center(50, '#')
 
-# try 3
-name1 = 'larry'
-name2 = 'curly'
-name3 = 'moe'
+name4 = "shemp"
+health4 = 90
 
-puts "Players:\n\t#{name1}\n\t#{name2}\n\t#{name3}"
+puts "#{name4.capitalize.ljust(30, '.')} #{health4} health"
+
+# all objects in Ruby have a to_s method that converts the object to its string representation. Using this tip, try chaining methods together to reverse the number 123 again.
+
+puts r = 123.to_s.reverse
+puts r.to_i
