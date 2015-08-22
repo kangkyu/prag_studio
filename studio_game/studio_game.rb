@@ -1,63 +1,40 @@
-name1 = 'larry'
-health1 = 60
-# puts "#{name1.capitalize} has a health of #{health1}."
+# a player
 
-name2 = 'curly'
-health2 = 125
-# puts "#{name2.upcase} has a health of #{health2}."
+# state
+# - name
+# - health
 
-name3 = 'moe'
-health3 = 100
-# text = "#{name3.capitalize} has a health of #{health3}."
-# puts text.center(50, '*')
+# behavior
+# - say_hello
 
-name4 = 'shemp'
-health4 = 90
-# formatted_name = name4.capitalize.ljust(30, '.')
-# puts "#{formatted_name} #{health4} health"
+class Player
+  def initialize(name, health=100)
+    @name = name.capitalize
+    @health = health
+    # puts "I'm #{name.capitalize} with a health of #{health} as of #{time}."
+  end
 
-# make this consistent - DRY principle
-# we need to write a method
+  def to_s
+    "I'm #{@name} with a health of #{@health} as of #{time}."
+  end
 
-def player_info(name, health)
-  # the last expression evaluated in the method
-  "#{name.capitalize} has a health of #{health}."
+  def time
+    Time.new.strftime("%I:%M:%S")
+  end
 end
 
-puts player_info('larry', 60)
-puts player_info('curly', 125)
-puts player_info('moe', 100)
-puts player_info('shemp', 90)
-puts
+player1 = Player.new("larry", 60)
+puts player1
 
-=begin
-# we want to be able to run this code:
+player2 = Player.new("curly", 125)
+puts player2
 
-puts say_hello("larry", 60)
-puts say_hello("curly", 125)
-puts say_hello("moe")
-puts say_hello("shemp", 90)
+player3 = Player.new("moe")
+puts player3
 
-# and get this output:
+player4 = Player.new("shemp", 90)
+puts player4
 
-I'm Larry with a health of 60.
-I'm Curly with a health of 125.
-I'm Moe with a health of 100.
-I'm Shemp with a health of 90.
-=end
-
-def say_hello(name, health=100)
-  "I'm #{name.capitalize} with a health of #{health} as of #{time}."
-end
-
-# define a new time method that returns a string representing the current hour of the day, minute of the hour, and second of the minute (e.g., "05:25:08").
-
-def time
-  Time.new.strftime("%I:%M:%S")
-end
-
-#
-puts say_hello("larry", 60)
-puts say_hello("curly", 125)
-puts say_hello("moe")
-puts say_hello("shemp", 90)
+# Don't Ask, Tell
+# don't ask the object for its state,
+# tell the object what to do
