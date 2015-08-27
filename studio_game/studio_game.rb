@@ -1,11 +1,18 @@
 class Player
+  attr_accessor :name
+  attr_reader :health
+
   def initialize(name, health=100)
     @name = name.capitalize
     @health = health
   end
 
+  def score
+    @health + @name.length
+  end
+
   def to_s
-    "I'm #{@name} with a health of #{@health}."
+    "I'm #{@name} with a health of #{@health} and a score of #{score}."
   end
 
   def time
@@ -23,28 +30,23 @@ class Player
   end
 end
 
-# Our goal is to write a Player class with w00t and blam methods, as well as a to_s method to easily print a player's information. In the end, we want to be able to run this code:
-
-player1 = Player.new("moe")
-puts player1
+# In the end, we want to be able to run this code:
 
 player2 = Player.new("larry", 60)
+puts player2.name
+player2.name = "Lawrence"
+puts player2.name
+puts player2.health
+puts player2.score
 puts player2
 
-player3 = Player.new("curly", 125)
-puts player3
-player3.blam
-puts player3
-player3.w00t
-puts player3
-
-# And get this result:
+# and get this output:
 =begin
-I'm Moe with a health of 100.
-I'm Larry with a health of 60.
-I'm Curly with a health of 125.
-Curly got blammed!
-I'm Curly with a health of 115.
-Curly got w00ted!
-I'm Curly with a health of 130.
+
+Larry
+Lawrence
+60
+68
+I'm Lawrence with a health of 60 and a score of 68.
+
 =end
